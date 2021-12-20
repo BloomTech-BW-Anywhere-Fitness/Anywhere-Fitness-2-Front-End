@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Register = () => {
+
+  const [on, setOn] = useState(false);
+
+  const toggleOn = (e) => {
+    e.preventDefault();
+    setOn(!on);
+  };
+
+
   return (
     <div>
       <h2>Sign Up</h2>
@@ -35,7 +44,26 @@ const Register = () => {
           />
         </div>
 
+        <div>
+          <p>Register as an instructor</p>
+          <button className="toggle" onClick={toggleOn}>{on ? 'no' : 'yes'}</button>
+          {on &&
+            <div>
+              <label>Instructor Authentication Code</label>
+              <input
+                type="text"
+                placeholder="Authentication Code"
+                id="auth"
+              />
+            </div>
+          }
+        </div>
+
         <button id="submit">Create Account</button>
+
+        <div className="login">
+          <p>Already have an account? <span>Log In</span></p>
+        </div>
       </form>
     </div>
   );
