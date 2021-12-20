@@ -5,10 +5,12 @@ const [state, setState] = useState({
     username: '',
     password: '',
 })
+//pretty sure I'm not doing this right
 
 const onSubmit = e =>{
     e.preventDefault();
 }
+//will fill this in more when I get backend info
 
 const handleChange = e =>{
     // setState({
@@ -17,6 +19,7 @@ const handleChange = e =>{
     // })
     // console.log(state)
 }
+//will fill this in more when I get info from backend and sort out my state issues
 
     return(
         <div>
@@ -44,6 +47,8 @@ const handleChange = e =>{
                             onChange = {handleChange}
                         />
                 </div>
+
+                {/* Probably put in an error section */}
 
                 <button type = 'submit'>Log In</button>
 
