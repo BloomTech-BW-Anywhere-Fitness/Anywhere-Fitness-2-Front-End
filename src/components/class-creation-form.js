@@ -21,13 +21,20 @@ export default function class_form(props) {
             <h2>Add New Class</h2>
 
             <div className='errors'>
-                <div>{errors.name}</div>
-                <div>{errors.size}</div>
+                <div>{errors.className}</div>
+                <div>{errors.classType}</div>
+                <div>{errors.classDate}</div>
+                <div>{errors.classTime}</div>
+                <div>{errors.classDuration}</div>
+                <div>{errors.classIntensity}</div>
+                <div>{errors.classLocation}</div>
+                <div>{errors.classAttendee}</div>
+
             </div>
         <div className='label-container'>
             <label>ClassName
                 <input id='name-input' 
-                    name='name'
+                    name='className'
                     type='text'
                     value={values.name}
                     placeholder='Enter your name'
@@ -36,9 +43,9 @@ export default function class_form(props) {
             </label>
 
             <label>ClassType
-                <select id='size-dropdown' 
+                <select id='type-dropdown' 
                 name='classType'
-                value={values.size}
+                value={values.type}
                 onChange={onChange}
                 >
                     <option value=''>--Select Class Type--</option>
@@ -53,7 +60,7 @@ export default function class_form(props) {
                 <input id='date-input' 
                     name='classDate'
                     type='date'
-                    value={values.name}
+                    value={values.date}
                     placeholder='Enter The Date'
                     onChange={onChange}
                 />
@@ -63,7 +70,7 @@ export default function class_form(props) {
                 <input id='time-input' 
                     name='classTime'
                     type='text'
-                    value={values.name}
+                    value={values.time}
                     placeholder='Enter Class Start Time'
                     onChange={onChange}
                 />
@@ -73,16 +80,16 @@ export default function class_form(props) {
                 <input id='duration-input' 
                     name='classDuration'
                     type='text'
-                    value={values.name}
+                    value={values.duration}
                     placeholder='Enter Class Duration'
                     onChange={onChange}
                 />
             </label>
 
             <label>ClassIntensity
-                <select id='size-dropdown' 
+                <select id='intensity-dropdown' 
                 name='classIntensity'
-                value={values.size}
+                value={values.intensity}
                 onChange={onChange}
                 >
                     <option value=''>--Select Intensity--</option>
@@ -97,7 +104,7 @@ export default function class_form(props) {
                 <input id='location-input' 
                     name='classLocation'
                     type='text'
-                    value={values.name}
+                    value={values.location}
                     placeholder='Enter Location'
                     onChange={onChange}
                 />
@@ -105,9 +112,9 @@ export default function class_form(props) {
 
             <label>ClassAttendee
                 <input id='attendee-input' 
-                    name='classLocation'
+                    name='classAttendee'
                     type='text'
-                    value={values.name}
+                    value={values.attendee}
                     placeholder='Max Amount of People'
                     onChange={onChange}
                 />
