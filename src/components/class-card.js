@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const StyledClassCard = styled.div`
 	background-color: white;
 	padding: 16px;
-	border-radius: 16px;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 `
@@ -20,7 +20,7 @@ const StyledCardDetail = styled.div`
 // Build component
 function ClassCard(props) {
 	// Deconstruct props
-	const { user, deleteClass, register, registered, type, start, duration, intensity, location, currentCt, maxCt } = props;
+	const { user, deleteClass, registerClass, registered, type, start, duration, intensity, location, currentCt, maxCt } = props;
 
 	// Card functions
 	const onDelete = event => {
@@ -31,7 +31,7 @@ function ClassCard(props) {
 	const onRegister = event => {
 		// Register function
 		// Should toggle the 'registered' boolean
-		register();
+		registerClass();
 	}
 
 	// Return elements

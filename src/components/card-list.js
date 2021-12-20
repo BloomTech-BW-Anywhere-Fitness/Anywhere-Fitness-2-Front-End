@@ -12,13 +12,13 @@ const StyledCardList = styled.div`
 // Build component
 function CardList(props) {
 	// Deconstruct props
-	const { classes, deleteClass, register } = props;
+	const { classes, deleteClass, registerClass } = props;
 
 	// Return elements
 	return (
 		<StyledCardList>
 			{classes.map(class => {
-				<ClassCard deleteClass={deleteClass} register={register} ></ClassCard>
+				<ClassCard deleteClass={deleteClass} registerClass={registerClass} ></ClassCard>
 			})}
 		</StyledCardList>
 	);
