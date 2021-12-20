@@ -2,10 +2,13 @@ import React, {useState} from "react";
 
 const Login = () =>{
 const [state, setState] = useState({
-    username: '',
+    email: '',
     password: '',
 })
 //pretty sure I'm not doing this right
+
+let authField = true;
+    //just testing some stuff with this, ignore
 
 const onSubmit = e =>{
     e.preventDefault();
@@ -15,11 +18,21 @@ const onSubmit = e =>{
 const handleChange = e =>{
     // setState({
     //     ...state,
-    //     e.target.name: e.target.value
+    //     e.target.name: e.target.value,
     // })
     // console.log(state)
 }
 //will fill this in more when I get info from backend and sort out my state issues
+
+const setAuthField = e =>{
+    if (authField){
+        authField = false;
+    }
+    else{
+        authField = true
+    }
+    console.log(authField)
+}
 
     return(
         <div>
@@ -52,7 +65,13 @@ const handleChange = e =>{
 
                 <button type = 'submit'>Log In</button>
 
-                <p>Don't have an account? <button>Sign Up</button> </p> 
+                <p>Don't have an account?  <button>Sign Up</button> </p> 
+
+           <button onClick = {setAuthField}>Register as an instructor</button>
+                
+                
+                {authField? <div>Blah Blah Blah</div> : null}
+                {/* just testing some stuff with this, ignore */}
             </form>
         </div>
  
