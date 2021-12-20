@@ -4,7 +4,7 @@ import axios from 'axios';
 // Import styling
 import './App.css';
 // Import components
-import ClassList from './components/class-list';
+import ClassList from './components/card-list';
 
 // Set defaults
 const defaultClassList = [];
@@ -54,7 +54,7 @@ function App() {
             <h2>Classes</h2>
             <button>Add New Classes</button>
           </div>
-          <ClassList classes={classes} deleteClass={deleteClass} registerClass={registerClass} />
+          <ClassList deleteClass={deleteClass} registerClass={registerClass} />
         </div>
       </div>
     </div>
