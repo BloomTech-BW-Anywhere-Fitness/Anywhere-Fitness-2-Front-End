@@ -89,7 +89,7 @@ const Register = () => {
           <div>
             <p>Register as an instructor</p>
             <label className="toggle-switch">
-              <input type="checkbox" checked={on} onClick={toggleOn} />
+              <input type="checkbox" onClick={toggleOn} />
               <span className="switch" />
             </label>
             {on &&
