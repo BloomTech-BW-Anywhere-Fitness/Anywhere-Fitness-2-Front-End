@@ -20,13 +20,13 @@ const StyledCardDetail = styled.div`
 // Build component
 function ClassCard(props) {
 	// Deconstruct props
-	const { delete, register, registered, type, start, duration, intensity, location, currentCt, maxCt } = props;
+	const { user, deleteClass, register, registered, type, start, duration, intensity, location, currentCt, maxCt } = props;
 
 	// Card functions
 	const onDelete = event => {
 		// Delete function
 		// Should trigger a DELETE axios request
-		delete();
+		deleteClass();
 	}
 	const onRegister = event => {
 		// Register function
@@ -37,11 +37,19 @@ function ClassCard(props) {
 	// Return elements
 	return (
 		<StyledClassCard>
-			<div className='cardHeader'>
+			{user === instructor
+			? <div className='cardHeader'>
 				<h3>Card Name</h3>
 				<button onClick={onDelete}></button>
-				<button onClick={onRegister}></button>
 			</div>
+			: <div className='cardHeader'>
+				<h3>Card Name</h3>
+				{registered === true
+				? <button className='registered' onClick={onRegister}></button>
+				: <button className='notRegistered' onClick={onRegister}></button>
+				}
+			</div>
+			}
 			<div className='divider'></div>
 			<StyledCardDetail>
 				<h6>Type</h6>
