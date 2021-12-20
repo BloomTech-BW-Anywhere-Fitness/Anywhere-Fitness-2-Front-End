@@ -1,5 +1,7 @@
 // Import dependencies
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+// Import styling
 import './App.css';
 // Import components
 import ClassList from './components/card-list';
