@@ -4,23 +4,23 @@ import styled from 'styled-components';
 import ClassCard from './class-card';
 
 // Create styled component
-const StyledCardList = styled.div`
+const StyledClassList = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 `
 
 // Build component
-function CardList(props) {
+function ClassList(props) {
 	// Deconstruct props
 	const { classes, deleteClass, registerClass } = props;
 
 	// Return elements
 	return (
-		<StyledCardList>
-			{ classes.map(item => <ClassCard deleteClass={deleteClass} registerClass={registerClass} />)}
-		</StyledCardList>
-	);
+		<StyledClassList>
+			{classes.map(item => <ClassCard deleteClass={deleteClass} registerClass={registerClass} />)}
+		</StyledClassList>
+	)
 };
 
 // Export component
-export default CardList;
+export default ClassList;
