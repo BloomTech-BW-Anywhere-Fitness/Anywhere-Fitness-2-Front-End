@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Router, Switch} from 'react-router'
+import {BrowserRouter, Route} from 'react-router-dom';
 // Import styling
 import './App.css';
 // Import components
@@ -60,6 +61,7 @@ function App() {
       </div>
     </div>
   );
+
 }
 
 export default App;
