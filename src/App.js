@@ -2,34 +2,36 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Routes, Route, Link } from 'react-router-dom';
+import * as yup from 'yup';
 // Import styling
 import './App.css';
 // Import components
 import ClassList from './components/class-list';
 import Login from './components/Login';
 import ClassForm from './components/class-form';
+import classSchema from './Validations/classValidation'
 
 // Set defaults
 const defaultClassList = [];
 const defaultValues = {
-  name: '',
-  type: '',
-  date: '',
-  time: '',
-  duration: '',
-  intensity: '',
-  location: '',
-  attendee: '',
+  className: '',
+  classType: '',
+  classDate: '',
+  classTime: '',
+  classDuration: '',
+  classIntensity: '',
+  classLocation: '',
+  classMax: '',
 }
 const defaultErrors = {
-  name: '',
-  type: '',
-  date: '',
-  time: '',
-  duration: '',
-  intensity: '',
-  location: '',
-  attendee: '',
+  className: '',
+  classType: '',
+  classDate: '',
+  classTime: '',
+  classDuration: '',
+  classIntensity: '',
+  classLocation: '',
+  classMax: '',
 }
 const defaultDisabled = true;
 
@@ -54,25 +56,43 @@ function App() {
   }, [])
 
   // Functions
+  const validate = (name, value) => {
+    yup.reach(classSchema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: '' }))
+      .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+  }
+
   const changeHandler = (name, value) => {
+    validate(name, value)
     setFormValues({ ...formValues, [name]: value });
   }
 
-   // READY FOR YUP
-  // const validate = (name, value) => {
-  //   yup.reach(FormSchema, name)
-  //     .validate(value)
-  //     .then(() => setFormErrors({ ...formErrors, [name]: '' }))
-  //     .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
-  // }
+  
 
-  const addClass = newClass => {
+  const postClass = newClass => {
     axios.post('url', newClass)
       .then(res => {
         console.log(res.data);
         setClasses([res.data, ...classes]);
       })
+      .catch(err => console.error(err));
   }
+  
+  const submitHandler = async (event) => {
+    const newClass = {
+        className: formValues.name,
+        classType: formValues.type,
+        classDate: formValues.date,
+        classTime: formValues.time,
+        classDuration: formValues.duration,
+        classIntensity: formValues.intensity,
+        classLocation: formValues.location,
+        classMax: formValues.max,        
+    }
+    console.log(newClass);
+    postClass(newClass);
+}
 
   const deleteClass = id => {
     // Instructor's 'delete class' function
@@ -80,18 +100,19 @@ function App() {
       .then(res => {
         console.log(res);
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
   
   const registerClass = () => {
     // User's 'register for class' function
   }
 
-  // READY FOR YUP
-  // useEffect(() => {
-    //   FormSchema.isValid(formValues)
-    //   .then(valid => setDisabled(!valid));
-  // }, [formValues])
+  useEffect(() => {
+    classSchema.isValid(formValues)
+      .then(valid => setDisabled(!valid))
+      .catch(err => console.error(err))
+  }, [formValues])
+  
 
   return (
     <div className='App'>
@@ -109,9 +130,9 @@ function App() {
       <Routes>
         <Route exact path = '/login' element= {<Login />} />
         <Route exact path = '/add-classes' element = {
-          <ClassForm
+          <ClassForm 
             values={formValues}
-            addClass={addClass}
+            submit={submitHandler}
             change={changeHandler}
             disabled={disabled}
             errors={formErrors}
