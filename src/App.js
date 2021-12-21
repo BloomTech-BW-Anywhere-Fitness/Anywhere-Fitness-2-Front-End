@@ -1,10 +1,13 @@
 // Import dependencies
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Routes, Route, Link} from 'react-router-dom';
 // Import styling
 import './App.css';
 // Import components
 import ClassList from './components/class-list';
+import Login from './components/Login';
+import Class_form from './components/class-creation-form';
 
 // Set defaults
 const defaultClassList = [];
@@ -52,13 +55,24 @@ function App() {
         <div className='card'>
           <div className='classHeader'>
             <h2>Classes</h2>
-            <button>Add New Classes</button>
+
+            <Link to='/add-classes'><button>Add New Classes</button></Link>
+                     {/* This displays the component, but the component returns errors */}
+
           </div>
           <ClassList classes={classes} deleteClass={deleteClass} registerClass={registerClass} />
         </div>
       </div>
+
+      <Routes>
+        <Route exact path = '/login' element= {<Login/>}/>
+        <Route exact path = 'add-classes' element = {<Class_form/>}></Route> 
+            {/* This displays the component, but the component returns errors */}
+
+      </Routes>
     </div>
   );
+
 }
 
 export default App;
