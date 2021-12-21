@@ -37,7 +37,11 @@ function ClassCard(props) {
 	// Return elements
 	return (
 		<StyledClassCard>
+<<<<<<< HEAD
 			{user === instructor
+=======
+			{user === 'instructor'
+>>>>>>> 8592e6f7740de8188f0bad14ac01941582f2c828
 			? <div className='cardHeader'>
 				<h3>Card Name</h3>
 				<button onClick={onDelete}></button>
@@ -45,8 +49,13 @@ function ClassCard(props) {
 			: <div className='cardHeader'>
 				<h3>Card Name</h3>
 				{registered === true
+<<<<<<< HEAD
 				? <button className='registered' onClick={onRegister}></button>
 				: <button className='notRegistered' onClick={onRegister}></button>
+=======
+				? <button className='registered' onClick={onRegister}>Unregister</button>
+				: <button className='notRegistered' onClick={onRegister}>Register</button>
+>>>>>>> 8592e6f7740de8188f0bad14ac01941582f2c828
 				}
 			</div>
 			}
