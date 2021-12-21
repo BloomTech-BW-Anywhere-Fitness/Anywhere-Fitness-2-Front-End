@@ -10,6 +10,7 @@ import ClassList from './components/class-list';
 import Login from './components/Login';
 import ClassForm from './components/class-form';
 import classSchema from './Validations/classValidation'
+import PrivateRoute from './components/PrivateRoute';
 
 // Set defaults
 const defaultClassList = [];
@@ -35,6 +36,7 @@ const defaultErrors = {
 }
 const defaultDisabled = true;
 
+
 // Build App
 function App() {
   // Set state
@@ -42,6 +44,8 @@ function App() {
   const [ formValues, setFormValues ] = useState(defaultValues);
   const [ formErrors, setFormErrors ] = useState(defaultErrors); // READY FOR YUP
   const [ disabled, setDisabled ] = useState(defaultDisabled); // READY FOR YUP
+  // const [authed, setAuthed] = useState(true)
+    //This will be helpful when we have authentication set up. Will feed it in to PrivateRoute so it knows whether we're logged in or not.
 
   // Fetch data
   useEffect(() => {

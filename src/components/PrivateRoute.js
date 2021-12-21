@@ -2,15 +2,16 @@ import {
     Route,
     Redirect
   } from 'react-router-dom';
+
+  //Will wrap different routes around this when we have authentication set up. The authentication boolean is set up in App.js.
   
-  function PrivateRoute({ children, ...rest }) {
-      //put in isAuthenticated prop
+  function PrivateRoute({ children, authed, ...rest }) {
     return (
       <Route
         {...rest}
         render={
           ({ location }) => (
-            isAuthenticated
+            authed
               ? (
                 children
               ) : (
