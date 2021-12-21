@@ -10,6 +10,7 @@ import ClassList from './components/class-list';
 import Login from './components/Login';
 import ClassForm from './components/class-form';
 import classSchema from './Validations/classValidation'
+import Navbar from './components/navbar';
 
 // Set defaults
 const defaultClassList = [];
@@ -116,7 +117,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* Insert Nav Component Here */}
+      <Navbar />
       <div className='container'>
         <div className='card'>
           <div className='cardHeader split'>
