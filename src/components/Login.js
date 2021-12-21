@@ -7,9 +7,6 @@ const [state, setState] = useState({
 })
 //pretty sure I'm not doing this right
 
-let authField = true;
-    //just testing some stuff with this, ignore
-
 const onSubmit = e =>{
     e.preventDefault();
 }
@@ -24,15 +21,6 @@ const handleChange = e =>{
 }
 //will fill this in more when I get info from backend and sort out my state issues
 
-const setAuthField = e =>{
-    if (authField){
-        authField = false;
-    }
-    else{
-        authField = true
-    }
-    console.log(authField)
-}
 
     return(
         <div>
@@ -66,12 +54,7 @@ const setAuthField = e =>{
                 <button type = 'submit'>Log In</button>
 
                 <p>Don't have an account?  <button>Sign Up</button> </p> 
-
-           <button onClick = {setAuthField}>Register as an instructor</button>
-                
-                
-                {authField? <div>Blah Blah Blah</div> : null}
-                {/* just testing some stuff with this, ignore */}
+        
             </form>
         </div>
  

@@ -1,12 +1,13 @@
 // Import dependencies
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Router, Switch} from 'react-router'
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Routes, Route, Link} from 'react-router-dom';
 // Import styling
 import './App.css';
 // Import components
 import ClassList from './components/class-list';
+import Login from './components/Login';
+import class_form from './components/class-creation-form';
 
 // Set defaults
 const defaultClassList = [];
@@ -54,11 +55,21 @@ function App() {
         <div className='card'>
           <div className='classHeader'>
             <h2>Classes</h2>
-            <button>Add New Classes</button>
+
+            <Link to='/add-classes'><button>Add New Classes</button></Link>
+                     {/* This isn't displaying at /add-classes, I think because it needs props */}
+
           </div>
           <ClassList classes={classes} deleteClass={deleteClass} registerClass={registerClass} />
         </div>
       </div>
+
+      <Routes>
+        <Route exact path = '/login' element= {<Login/>}/>
+        <Route exact path = 'add-classes' element = {<class-form/>}></Route> 
+            {/* This isn't displaying at /add-classes, I think because it needs props */}
+
+      </Routes>
     </div>
   );
 
