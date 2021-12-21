@@ -7,7 +7,7 @@ import './App.css';
 // Import components
 import ClassList from './components/class-list';
 import Login from './components/Login';
-import Class_form from './components/class-creation-form';
+import Classform from './components/class-creation-form';
 
 // Set defaults
 const defaultClassList = [];
@@ -66,7 +66,7 @@ function App() {
 
       <Routes>
         <Route exact path = '/login' element= {<Login/>}/>
-        <Route exact path = 'add-classes' element = {<Class_form/>}></Route> 
+        <Route exact path = 'add-classes' element = {<Classform/>}></Route> 
             {/* This displays the component, but the component returns errors */}
 
       </Routes>

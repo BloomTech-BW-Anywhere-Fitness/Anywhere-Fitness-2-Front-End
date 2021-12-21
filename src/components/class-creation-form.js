@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function Class_form(props) {
+export default function Classform(props) {
     const { values, submit, change, disabled, errors } = props
 
     const onSubmit = evt => {
