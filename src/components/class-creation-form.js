@@ -1,4 +1,5 @@
 import React from 'react';
+import { classSchema } from '../Validations/classValidation';
 
 
 export default function class_form(props) {
