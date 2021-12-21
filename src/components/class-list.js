@@ -19,7 +19,7 @@ function ClassList(props) {
 		<StyledClassList>
 			{classes.map(item => <ClassCard deleteClass={deleteClass} registerClass={registerClass} />)}
 		</StyledClassList>
-	)
+	);
 };
 
 // Export component

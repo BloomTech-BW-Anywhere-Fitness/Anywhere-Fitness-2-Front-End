@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import * as yup from 'yup';
 // Import styling
 import './App.css';
@@ -119,27 +119,35 @@ function App() {
       {/* Insert Nav Component Here */}
       <div className='container'>
         <div className='card'>
-          <div className='classHeader'>
+          <div className='cardHeader split'>
             <h2>Classes</h2>
-            <Link to='/add-classes'><button>Add New Classes</button></Link>
-                     {/* This displays the component, but the component returns errors */}
+            <Link to='/add-classes'>
+              <button>Add New Classes</button>
+            </Link>
           </div>
-          <ClassList classes={classes} deleteClass={deleteClass} registerClass={registerClass} />
+          <Switch>
+            <Route exact path='/'>
+              <ClassList
+                classes={classes}
+                deleteClass={deleteClass}
+                registerClass={registerClass}
+              />
+            </Route>
+            <Route exact path='/login'>
+              <Login />
+            </Route>
+            <Route exact path='/add-classes'>
+              <ClassForm 
+                values={formValues}
+                submit={submitHandler}
+                change={changeHandler}
+                disabled={disabled}
+                errors={formErrors}
+              />
+            </Route>
+          </Switch>
         </div>
       </div>
-      <Routes>
-        <Route exact path = '/login' element= {<Login />} />
-        <Route exact path = '/add-classes' element = {
-          <ClassForm 
-            values={formValues}
-            submit={submitHandler}
-            change={changeHandler}
-            disabled={disabled}
-            errors={formErrors}
-          />
-        } />
-            {/* This displays the component, but the component returns errors */}
-      </Routes>
     </div>
   );
 
