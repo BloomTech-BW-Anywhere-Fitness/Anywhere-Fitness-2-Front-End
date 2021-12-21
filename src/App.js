@@ -57,7 +57,7 @@ function App() {
             <h2>Classes</h2>
 
             <Link to='/add-classes'><button>Add New Classes</button></Link>
-                     {/* This isn't displaying at /add-classes, I think because it needs props */}
+                     {/* This displays the component, but the component returns errors */}
 
           </div>
           <ClassList classes={classes} deleteClass={deleteClass} registerClass={registerClass} />
@@ -67,7 +67,7 @@ function App() {
       <Routes>
         <Route exact path = '/login' element= {<Login/>}/>
         <Route exact path = 'add-classes' element = {<Class_form/>}></Route> 
-            {/* This isn't displaying at /add-classes, I think because it needs props */}
+            {/* This displays the component, but the component returns errors */}
 
       </Routes>
     </div>

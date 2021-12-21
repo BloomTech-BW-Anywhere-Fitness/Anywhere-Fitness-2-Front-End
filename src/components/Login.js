@@ -5,7 +5,7 @@ const [state, setState] = useState({
     email: '',
     password: '',
 })
-//pretty sure I'm not doing this right
+//pretty sure I'm not doing this right. Want to set up state to hold login info for submission
 
 const onSubmit = e =>{
     e.preventDefault();
@@ -26,6 +26,7 @@ const handleChange = e =>{
         <div>
             <h2>Sign In</h2>
             <form onSubmit = {onSubmit}>
+                {/* pretty simple, just need email and password */}
  
                 <div>
                     <label>Email</label>
