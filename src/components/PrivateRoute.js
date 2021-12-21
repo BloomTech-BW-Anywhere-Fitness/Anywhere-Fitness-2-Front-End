@@ -14,11 +14,13 @@ import {
             authed
               ? (
                 children
+                //If the user is authenticated then it will display the child components.
               ) : (
                 <Redirect
                   to={{
                     pathname: '/login',
                     // state: { from: location }
+                //If the user isn't authenticated, this redirects said user to Login so they can login.
                   }}
                 />
               ))

@@ -131,6 +131,7 @@ function App() {
           </div>
           <Switch>
             <Route exact path='/'>
+              {/* Will make this a PrivateRoute when authentication is set up. */}
               <ClassList
                 classes={classes}
                 deleteClass={deleteClass}
@@ -141,6 +142,7 @@ function App() {
               <Login />
             </Route>
             <Route exact path='/add-classes'>
+              {/* Will make this a PrivateRoute when authentication is set up. */}
               <ClassForm 
                 values={formValues}
                 submit={submitHandler}
