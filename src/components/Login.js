@@ -1,32 +1,51 @@
 import React, {useState} from "react";
+import axios from "axios";
 
-const Login = () =>{
-const [state, setState] = useState({
-    email: '',
-    password: '',
-})
-//pretty sure I'm not doing this right. Want to set up state to hold login info for submission
+const Login = (props) =>{
+  const {setIsLoggedIn, setIsInstructor} = props;
+  // console.log(isLoggedIn)
+ 
+    // State Management
+  const [credentials, setCredentials] = useState({
+    "email": "",
+    "password": ""
+  });
 
-const onSubmit = e =>{
-    e.preventDefault();
-}
-//will fill this in more when I get backend info
 
-const handleChange = e =>{
-    // setState({
-    //     ...state,
-    //     e.target.name: e.target.value,
-    // })
-    // console.log(state)
-}
-//will fill this in more when I get info from backend and sort out my state issues
+  // Event Handlers
+  const handleChange = (event) => {
+    setCredentials({
+      ...credentials,
+      [event.target.name]: event.target.value
+    });
+    console.log(credentials)
+  };
+
+//login function, used on the next line in onSubmit
+  const login = credentials =>{
+    axios.post('https://reqres.in/api/login', credentials)
+      .then(res =>{
+        console.log(res.data)
+        setIsLoggedIn(true)
+        window.localStorage.setItem('token', res.data.token);
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+  }
+
+  //On Submit
+  const onSubmit = (event) => {
+    event.preventDefault();
+    login(credentials);
+  };
+
 
 
     return(
         <div>
             <h2>Sign In</h2>
             <form onSubmit = {onSubmit}>
-                {/* pretty simple, just need email and password */}
  
                 <div>
                     <label>Email</label>
@@ -36,6 +55,7 @@ const handleChange = e =>{
                         placeholder = 'Email'
                         required = {true}
                         onChange = {handleChange}
+                        value= {credentials.email}
                     />
                 </div>
 
@@ -47,6 +67,7 @@ const handleChange = e =>{
                             placeholder= 'password'
                             required = {true}
                             onChange = {handleChange}
+                            value= {credentials.password}
                         />
                 </div>
 
@@ -54,8 +75,7 @@ const handleChange = e =>{
 
                 <button type = 'submit'>Log In</button>
 
-                <p>Don't have an account?  <button>Sign Up</button> </p> 
-        
+                <p>Don't have an account? <button>Sign Up</button> </p> 
             </form>
         </div>
  
