@@ -1,6 +1,5 @@
 // Import dependencies
 import React from 'react';
-import styled from 'styled-components';
 
 // Build component
 function ClassSearch(props) {
@@ -29,20 +28,3 @@ function ClassSearch(props) {
 
 // Export component
 export default ClassSearch;
-
-/// REMOVE ///
-// Add as a helper function to App.js
-const filterClasses = (query) => {
-	if (!query) {
-		return <ClassList />;
-	} else {
-		const filteredList = classes.filter(item => {
-			const className = item.name.toLowerCase();
-			return className.includes(query);
-		});
-
-		return (
-			{filteredList.map(item => <ClassCard key={item.id} deleteClass={deleteClass} registerClass={registerClass} />)}
-		)
-	}
-};
