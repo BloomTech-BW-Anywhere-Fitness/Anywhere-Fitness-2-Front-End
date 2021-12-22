@@ -136,7 +136,7 @@ function App() {
               />
             </Route>
             <Route exact path='/login'>
-              <Login />
+              <Login setIsLoggedIn=  {setIsLoggedIn} isLoggedIn= {isLoggedIn}/>
             </Route>
             <Route exact path='/add-classes'>
               <ClassForm 

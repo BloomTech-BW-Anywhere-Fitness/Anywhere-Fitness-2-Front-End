@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import axios from "axios";
 
-const Login = () =>{
+const Login = (props) =>{
+  const {isLoggedIn, setIsLoggedIn} = props;
+  // console.log(isLoggedIn)
  
     // State Management
   const [credentials, setCredentials] = useState({
@@ -18,11 +21,22 @@ const Login = () =>{
     console.log(credentials)
   };
 
+//login function, used on the next line in onSubmit
+  const login = credentials =>{
+    axios.post('https://reqres.in/api/login', credentials)
+      .then(res =>{
+        console.log(res)
+        setIsLoggedIn(true)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+  }
+
   //On Submit
   const onSubmit = (event) => {
     event.preventDefault();
-    // login(credentials);
-    console.log('submitting')
+    login(credentials);
   };
 //will fill this in more when I get backend info
 
