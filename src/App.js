@@ -11,6 +11,7 @@ import Login from './components/Login';
 import ClassForm from './components/class-form';
 import classSchema from './Validations/classValidation'
 import Navbar from './components/navbar';
+import Search from './components/search';
 
 // Set defaults
 const defaultClassList = [];
