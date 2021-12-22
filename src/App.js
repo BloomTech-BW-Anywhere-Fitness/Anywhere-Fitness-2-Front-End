@@ -12,6 +12,7 @@ import ClassForm from './components/class-form';
 import classSchema from './Validations/classValidation'
 import Navbar from './components/navbar';
 import Search from './components/search';
+import ClassCard from './components/class-card';
 
 // Set defaults
 const defaultClassList = [];
@@ -116,13 +117,14 @@ function App() {
       const filteredList = classes.filter(item => {
         const className = item.name.toLowerCase();
         return className.includes(query);
-      });
+      })
 
       return (
-        {filteredList.map(item => <ClassCard key={item.id} deleteClass={deleteClass} registerClass={registerClass} />)}
+        filteredList().map(item => {< ClassCard key={item.id} deleteClass={deleteClass} registerClass={registerClass} />})
       )
     }
   };
+  
 
   useEffect(() => {
     classSchema.isValid(formValues)
