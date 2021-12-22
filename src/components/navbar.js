@@ -10,22 +10,23 @@ const Navbar = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to='/about' activeStyle>
-                        About
+                    <NavLink to='/classes' activeStyle>
+                        Classes
                     </NavLink>
-                    <NavLink to='/services' activeStyle>
-                        Services
+                    <NavLink to='/reservations' activeStyle>
+                        Reservations
                     </NavLink>
-                    <NavLink to='/contact-us' activeStyle>
-                        Contact Us
+                    <NavLink to='/punch-pass' activeStyle>
+                        Punch Pass
                     </NavLink>
                     <NavLink to='/sign-up' activeStyle>
                         Sign Up
                     </NavLink>
+                    <NavBtnLink to='/login'>Login</NavBtnLink>
                 </NavMenu>
-                <NavBtn>
+                {/* <NavBtn>
                     <NavBtnLink to='/login'>Sign In</NavBtnLink>
-                </NavBtn>
+                </NavBtn> */}
             </Nav>
         </>
     );
