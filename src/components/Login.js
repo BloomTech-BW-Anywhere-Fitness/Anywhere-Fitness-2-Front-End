@@ -1,25 +1,31 @@
 import React, {useState} from "react";
 
 const Login = () =>{
-const [state, setState] = useState({
-    username: '',
-    password: '',
-})
-//pretty sure I'm not doing this right
+ 
+    // State Management
+  const [credentials, setCredentials] = useState({
+    "email": "",
+    "password": ""
+  });
 
-const onSubmit = e =>{
-    e.preventDefault();
-}
+
+  // Event Handlers
+  const handleChange = (event) => {
+    setCredentials({
+      ...credentials,
+      [event.target.name]: event.target.value
+    });
+    console.log(credentials)
+  };
+
+  //On Submit
+  const onSubmit = (event) => {
+    event.preventDefault();
+    // login(credentials);
+    console.log('submitting')
+  };
 //will fill this in more when I get backend info
 
-const handleChange = e =>{
-    // setState({
-    //     ...state,
-    //     e.target.name: e.target.value
-    // })
-    // console.log(state)
-}
-//will fill this in more when I get info from backend and sort out my state issues
 
     return(
         <div>
@@ -34,6 +40,7 @@ const handleChange = e =>{
                         placeholder = 'Email'
                         required = {true}
                         onChange = {handleChange}
+                        value= {credentials.email}
                     />
                 </div>
 
@@ -45,6 +52,7 @@ const handleChange = e =>{
                             placeholder= 'password'
                             required = {true}
                             onChange = {handleChange}
+                            value= {credentials.password}
                         />
                 </div>
 
