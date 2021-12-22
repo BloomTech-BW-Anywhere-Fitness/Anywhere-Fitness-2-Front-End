@@ -17,7 +17,7 @@ function ClassList(props) {
 	// Return elements
 	return (
 		<StyledClassList>
-			{classes.map(item => <ClassCard deleteClass={deleteClass} registerClass={registerClass} />)}
+			{classes.map(item => <ClassCard key={item.id} deleteClass={deleteClass} registerClass={registerClass} />)}
 		</StyledClassList>
 	);
 };
