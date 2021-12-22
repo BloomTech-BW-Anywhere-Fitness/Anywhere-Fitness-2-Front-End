@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 
 const Login = () =>{
-const [state, setState] = useState({
-    email: '',
-    password: '',
-})
-//pretty sure I'm not doing this right. Want to set up state to hold login info for submission
+ // State Management
+ const [credentials, setCredentials] = useState({
+    "username": "",
+    "password": ""
+  });
+
 
 const onSubmit = e =>{
     e.preventDefault();
