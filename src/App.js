@@ -71,8 +71,6 @@ function App() {
     setFormValues({ ...formValues, [name]: value });
   }
 
-  
-
   const postClass = newClass => {
     axios.post('url', newClass)
       .then(res => {
@@ -95,7 +93,7 @@ function App() {
     }
     console.log(newClass);
     postClass(newClass);
-}
+  }
 
   const deleteClass = id => {
     // Instructor's 'delete class' function
@@ -109,6 +107,21 @@ function App() {
   const registerClass = () => {
     // User's 'register for class' function
   }
+
+  const filterClasses = (query) => {
+    if (!query) {
+      return <ClassList />;
+    } else {
+      const filteredList = classes.filter(item => {
+        const className = item.name.toLowerCase();
+        return className.includes(query);
+      });
+
+      return (
+        {filteredList.map(item => <ClassCard key={item.id} deleteClass={deleteClass} registerClass={registerClass} />)}
+      )
+    }
+  };
 
   useEffect(() => {
     classSchema.isValid(formValues)
