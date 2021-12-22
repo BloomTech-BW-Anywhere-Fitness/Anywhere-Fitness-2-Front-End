@@ -43,6 +43,7 @@ function App() {
   const [ formValues, setFormValues ] = useState(defaultValues);
   const [ formErrors, setFormErrors ] = useState(defaultErrors); // READY FOR YUP
   const [ disabled, setDisabled ] = useState(defaultDisabled); // READY FOR YUP
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   // Fetch data
   useEffect(() => {
