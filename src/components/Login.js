@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 
 const Login = (props) =>{
-  const {isLoggedIn, setIsLoggedIn} = props;
+  const {setIsLoggedIn, setIsInstructor} = props;
   // console.log(isLoggedIn)
  
     // State Management
@@ -25,8 +25,9 @@ const Login = (props) =>{
   const login = credentials =>{
     axios.post('https://reqres.in/api/login', credentials)
       .then(res =>{
-        console.log(res)
+        console.log(res.data)
         setIsLoggedIn(true)
+        window.localStorage.setItem('token', res.data.token);
       })
       .catch(err=>{
         console.log(err)
@@ -38,7 +39,7 @@ const Login = (props) =>{
     event.preventDefault();
     login(credentials);
   };
-//will fill this in more when I get backend info
+
 
 
     return(

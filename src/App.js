@@ -44,6 +44,7 @@ function App() {
   const [ formErrors, setFormErrors ] = useState(defaultErrors); // READY FOR YUP
   const [ disabled, setDisabled ] = useState(defaultDisabled); // READY FOR YUP
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isInstructor, setIsInstructor] = useState(false)
 
   // Fetch data
   useEffect(() => {
@@ -136,7 +137,7 @@ function App() {
               />
             </Route>
             <Route exact path='/login'>
-              <Login setIsLoggedIn=  {setIsLoggedIn} isLoggedIn= {isLoggedIn}/>
+              <Login setIsLoggedIn=  {setIsLoggedIn} setIsInstructor = {setIsInstructor}/>
             </Route>
             <Route exact path='/add-classes'>
               <ClassForm 
