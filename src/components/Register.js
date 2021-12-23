@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from 'axios';
 
 const StyledRegister = styled.div`
 .toggle-switch {
@@ -80,9 +81,32 @@ span, label {
 const Register = () => {
 
   const [on, setOn] = useState(false);
-
   const toggleOn = () => {
     setOn(!on);
+  };
+
+  // const [account, setAccount] = useState({});
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const onChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    axios.post('https://reqres.in/api/users', formValues)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
 
@@ -91,7 +115,7 @@ const Register = () => {
       <div>
         <div className="container">
           <h2>Sign Up</h2>
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="col">
               <div className="name">
                 <label>Name</label>
@@ -100,6 +124,7 @@ const Register = () => {
                   placeholder="Full Name"
                   name="name"
                   id="name"
+                  onChange={onChange}
                 />
               </div>
 
@@ -110,6 +135,7 @@ const Register = () => {
                   placeholder="Email"
                   name="email"
                   id="email"
+                  onChange={onChange}
                 />
               </div>
 
@@ -120,6 +146,7 @@ const Register = () => {
                   placeholder="Password"
                   name="password"
                   id="password"
+                  onChange={onChange}
                 />
               </div>
 
