@@ -8,7 +8,7 @@ import ClassList from '../components/class-list';
 import ClassForm from '../components/class-form';
 import classSchema from '../Validations/classValidation';
 import ClassCard from '../components/class-card';
-import AddClassPage from './addClassPage';
+// import AddClassPage from './addClassPage';
 
 //set defaults
 const defaultClassList = [];
