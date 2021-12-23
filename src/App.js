@@ -16,6 +16,7 @@ import ClassCard from './components/class-card';
 import HomePage from './pages/homePage';
 import classPage from './pages/classPage';
 
+
 // Set defaults
 const defaultClassList = [];
 const defaultValues = {
