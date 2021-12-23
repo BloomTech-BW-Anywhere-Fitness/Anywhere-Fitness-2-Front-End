@@ -1,22 +1,15 @@
-// Import dependencies
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState }  from 'react';
 import axios from 'axios';
 import { Route, Switch, Link } from 'react-router-dom';
 import * as yup from 'yup';
-// Import styling
-import './App.css';
-// Import components
-import ClassList from './components/class-list';
-import Login from './components/Login';
-import ClassForm from './components/class-form';
-import classSchema from './Validations/classValidation'
-import Navbar from './components/navbar';
-import Search from './components/search';
-import ClassCard from './components/class-card';
-import HomePage from './pages/homePage';
-import classPage from './pages/classPage';
 
-// Set defaults
+//Import Components
+import ClassList from '../components/class-list';
+import ClassForm from '../components/class-form';
+import classSchema from '../Validations/classValidation';
+import ClassCard from '../components/class-card';
+
+//set defaults
 const defaultClassList = [];
 const defaultValues = {
   className: '',
@@ -40,16 +33,14 @@ const defaultErrors = {
 }
 const defaultDisabled = true;
 
-// Build App
-function App() {
-  // Set state
+//Building of Class Page
+const AddClassPage = () => {
+  //Setting State
   const [ classes, setClasses ] = useState(defaultClassList);
   const [ formValues, setFormValues ] = useState(defaultValues);
   const [ formErrors, setFormErrors ] = useState(defaultErrors); // READY FOR YUP
-  const [ disabled, setDisabled ] = useState(defaultDisabled); // READY FOR YUP
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isInstructor, setIsInstructor] = useState(false)
-
+  const [ disabled, setDisabled ] = useState(defaultDisabled);
+  
   // Fetch data
   useEffect(() => {
     const getClasses = () => {
@@ -83,7 +74,7 @@ function App() {
       })
       .catch(err => console.error(err));
   }
-  
+
   const submitHandler = async (event) => {
     const newClass = {
         className: formValues.name,
@@ -126,54 +117,29 @@ function App() {
       )
     }
   };
-  
 
   useEffect(() => {
     classSchema.isValid(formValues)
       .then(valid => setDisabled(!valid))
       .catch(err => console.error(err))
   }, [formValues])
-  
 
-  return (
-    <div className='App'>
-      <Navbar />
-      <div className='container'>
-        <div className='card'>
-          
-          <Switch>
-            <Route exact path='/' component={HomePage}>
-              
-            </Route>
-            <Route exact path='/classes' component={classPage}>
-              
-            </Route>
-            <Route exact path='/login'>
-              <Login setIsLoggedIn=  {setIsLoggedIn} setIsInstructor = {setIsInstructor}/>
-            </Route>
-            <Route exact path='/add-classes'>
-            <ClassForm 
+
+
+    return (
+        <div>
+           
+              <ClassForm 
                 values={formValues}
                 submit={submitHandler}
                 change={changeHandler}
                 disabled={disabled}
                 errors={formErrors}
               />
-            </Route>
-          </Switch>
+           
         </div>
-      </div>
-    </div>
+        
   );
-
 }
 
-export default App;
-
-
-{/* <div className='cardHeader split'>
-  <h2>Classes</h2>
-  <Link to='/add-classes'>
-    <button>Add New Classes</button>
-  </Link>
-</div> */}
+export default AddClassPage;
